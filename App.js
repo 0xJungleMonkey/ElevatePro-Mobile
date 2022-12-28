@@ -14,7 +14,7 @@ import {
   MD3LightTheme,
 } from "react-native-paper";
 import merge from "deepmerge";
-import React from "react";
+// import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { TouchableOpacity } from "react-native";
 import {
@@ -26,11 +26,70 @@ import {
 } from "react-native-paper";
 import { PreferencesContext } from "./PreferencesContext";
 import { Header } from "./Header";
+import { StatusBar } from "expo-status-bar";
+// import react from "react";
+import React, { useState } from "react";
+import { useTheme } from "react-native-paper";
+import { StyleSheet, Text, View, Image, TextInput, Button } from "react-native";
+import LoginScreen from "./Login";
+// import { Form, FormItem } from "react-native-form-component";
+// const DetailsScreen = (props) => {
+//   const { title, content } = props?.route?.params;
+//   return (
+//     <List.Section>
+//       <List.Subheader>{title}</List.Subheader>
+//       <List.Item title={content} />
+//     </List.Section>
+//   );
+// };
+// const LoginScreen = ({ navigation }) => {
+//   const [email, setEmail] = useState("");
+//   // const [password, setPassword] = useState("");
+//   // const theme = useTheme();
+
+//   return (
+//     <View>
+//       <Image
+//         style={StyleSheet.create({
+//           marginBottom: 40,
+//           width: "40%",
+//           height: "20%",
+//         })}
+//         source={require("./assets/logo.jpg")}
+//       />
+//       <StatusBar style="auto" />
+
+//       <View>
+//         <TextInput
+//           placeholder="Email"
+//           placeholderTextColor="#003f5c"
+//           onChangeText={(email) => setEmail(email)}
+//         />
+//       </View>
+//       {/* <View style={styles.inputView}>
+//         <TextInput
+//           style={styles.TextInput}
+//           placeholder="Password"
+//           placeholderTextColor="#003f5c"
+//           secureTextEntry={true}
+//           onChangeText={(password) => setPassword(password)}
+//         />
+//       </View> */}
+//       {/* <TouchableOpacity>
+//         <Text >Forgot Password?</Text>
+//       </TouchableOpacity>  */}
+//       <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+//         <Text>LOGIN</Text>
+//       </TouchableOpacity>
+//     </View>
+//   );
+// };
 // The Stack variable is created by calling createStackNavigator
 const Stack = createStackNavigator();
 // the title and content variables are defined as strings.
 const title = "meow!";
 const content = "I am not a cat.I am a tiger";
+
 //The HomeScreen component is a functional component that displays a touchable card
 // touchable card containing the title and content variables. When the
 // touchable area is pressed, it uses the navigation prop to navigate to the
@@ -56,7 +115,6 @@ const HomeScreen = ({ navigation }) => (
 // The DetailsScreen component is also a functional component
 // displays a list with a subheader and an item.
 // It retrieves the title and content parameters from the route prop and displays them in the list.
-
 const DetailsScreen = (props) => {
   const { title, content } = props?.route?.params;
   return (
@@ -110,11 +168,12 @@ export default function App() {
       <PaperProvider theme={theme}>
         <NavigationContainer theme={theme}>
           <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Login"
             screenOptions={{
-              header: ({ scene }) => <Header scene={scene} />,
+              header: (scene) => <Header title={scene.route.name} {...scene} />,
             }}
           >
+            <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Details" component={DetailsScreen} />
           </Stack.Navigator>
@@ -144,3 +203,44 @@ export default function App() {
 //     justifyContent: 'center',
 //   },
 // });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+
+    // backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  image: {
+    marginBottom: 40,
+    width: "40%",
+    height: "20%",
+  },
+  inputView: {
+    // backgroundColor: "#b5b6e6",
+    borderRadius: 30,
+    width: "70%",
+    height: 45,
+    marginBottom: 20,
+    alignItems: "center",
+  },
+  TextInput: {
+    height: 50,
+    flex: 1,
+    padding: 10,
+    marginLeft: 20,
+  },
+  forgot_button: {
+    height: 30,
+    marginBottom: 30,
+  },
+  loginBtn: {
+    width: "70%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    // backgroundColor: theme.colors.Primary,
+  },
+});
