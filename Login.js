@@ -10,9 +10,6 @@ export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   return (
     <View style={styles.container}>
-      <View style={styles.newContainer}>
-        <Image style={styles.image} source={require("./assets/logo.jpg")} />
-      </View>
       <StatusBar style="auto" />
       <View style={styles.top_bar}>
         <Text
@@ -65,6 +62,9 @@ export default function LoginScreen({ navigation }) {
         >
           LOGIN
         </Button>
+      </View>
+      <View style={styles.newContainer}>
+        <Image style={styles.image} source={require("./assets/logo.jpg")} />
       </View>
       <View
         style={{
