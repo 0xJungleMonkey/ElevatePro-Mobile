@@ -30,7 +30,6 @@ export default function LoginScreen({ navigation }) {
       </View>
       <View
         style={{
-          flex: 3,
           paddingLeft: "2%",
           paddingRight: "2%",
         }}
@@ -58,7 +57,7 @@ export default function LoginScreen({ navigation }) {
           right={<TextInput.Affix text="/100" />}
         />
       </View>
-      <View style={{ flex: 5 }}>
+      <View>
         <Button
           style={styles.loginBtn}
           mode="contained"
@@ -69,7 +68,6 @@ export default function LoginScreen({ navigation }) {
       </View>
       <View
         style={{
-          //   flex: 6,
           paddingLeft: "2%",
           paddingRight: "2%",
           position: "relative",
@@ -88,7 +86,6 @@ export default function LoginScreen({ navigation }) {
       </View>
       <View
         style={{
-          //   flex: 7,
           flexDirection: "row",
           position: "relative",
           paddingLeft: "2%",
@@ -120,14 +117,18 @@ export default function LoginScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  newContainer: {
+  container: {
     flex: 1,
-    // display: "inline-block",
+  },
+  newContainer: {
+    paddingTop: "3%",
+    paddingBottom: "3%",
+    paddingLeft: "2%",
+    paddingRight: "2%",
     alignItems: "center",
     justifyContent: "center",
   },
   top_bar: {
-    flex: 2,
     // flexDirection: "row",
     paddingTop: "3%",
     paddingBottom: "3%",
@@ -137,18 +138,14 @@ const styles = StyleSheet.create({
     // marginBottom: 20,
     // marginTop: 20,
   },
-  container: {
-    flex: 1,
-    margin: 10,
-  },
+
   image: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
   },
   inputView: {
-    flex: 4,
     height: 100,
-    marginBottom: 20,
+    // marginBottom: 20,
   },
   TextInput: {
     margin: 20,
