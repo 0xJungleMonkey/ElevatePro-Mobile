@@ -27,6 +27,7 @@ function GetAllCards(props) {
       {data.map((item, i) => {
         return (
           <TouchableOpacity
+            key={i}
             onPress={() =>
               props.navigation?.push("Details", {
                 item,
@@ -52,7 +53,6 @@ function GetAllCards(props) {
 export default HomeScreen = ({ navigation }) => {
   const [expanded, setExpanded] = React.useState(true);
   const theme = useTheme();
-
   const handlePress = () => setExpanded(!expanded);
   return (
     <View>
@@ -70,9 +70,6 @@ export default HomeScreen = ({ navigation }) => {
             <GetAllCards navigation={navigation} />
           </List.Accordion>
         </List.Section>
-        {/* 
-          <List.Subheader>Intervention Elevators</List.Subheader>
-        */}
       </ScrollView>
     </View>
   );

@@ -28,22 +28,11 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import LoginScreen from "./Login";
 import HomeScreen from "./Home";
+import DetailsScreen from "./DetailsScreen"
 // The Stack variable is created by calling createStackNavigator
 const Stack = createStackNavigator();
 // the title and content variables are defined as strings.
 
-// The DetailsScreen component is also a functional component
-// displays a list with a subheader and an item.
-// It retrieves the title and content parameters from the route prop and displays them in the list.
-const DetailsScreen = (props) => {
-  const { title, content } = props?.route?.params;
-  return (
-    <List.Section>
-      <List.Subheader>{title}</List.Subheader>
-      <List.Item title={content} />
-    </List.Section>
-  );
-};
 
 // The adaptNavigationTheme function is not defined in this code, but it is assumed to be a function that takes an object with two properties (reactNavigationLight and reactNavigationDark) and returns an object with two properties (LightTheme and DarkTheme). These properties are likely objects that contain styles and settings for a light theme and a dark theme, respectively.
 const { LightTheme, DarkTheme } = adaptNavigationTheme({

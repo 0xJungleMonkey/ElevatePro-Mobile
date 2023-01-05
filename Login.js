@@ -5,10 +5,11 @@ import { Button, TextInput, Text, Card, List } from "react-native-paper";
 import { View, Image, StyleSheet } from "react-native";
 import { useTheme } from "react-native-paper";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import axios from "axios";
 export default function LoginScreen({ navigation }) {
   const theme = useTheme();
-
   const [email, setEmail] = useState("");
+  const [responseStatus, setResponseStatus] = useState();
   return (
     <KeyboardAwareScrollView>
       <View style={styles.container}>
@@ -65,7 +66,18 @@ export default function LoginScreen({ navigation }) {
           <Button
             style={styles.loginBtn}
             mode="contained"
-            onPress={() => navigation.navigate("Home")}
+            value={email}
+            onPress={() => {
+              axios
+                .get(`http://localhost:5287/api/employee/${email}`)
+
+                .then((response) => {
+                  if (response.status === 200) {
+                    navigation.navigate("Home");
+                  }
+                })
+                .catch(() => alert("Invalid Email."));
+            }}
           >
             LOGIN
           </Button>
